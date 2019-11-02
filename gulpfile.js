@@ -1,19 +1,6 @@
 const gulp = require('gulp')
 const browserSync = require('browser-sync').create()
 const cleanCSS = require('gulp-clean-css');
-const changed = require('gulp-changed');
-const htmlmin = require('gulp-htmlmin');
-
-gulp.task('minify-html', () => {
-    return gulp.src('*.html')
-        .pipe(htmlmin({
-            // 余白を除去する
-            collapseWhitespace: true,
-            // HTMLコメントを除去する
-            removeComments: true
-        }))
-        .pipe(gulp.dest('dist'))
-})
 
 gulp.task('sass', () => {
     const sass = require('gulp-sass')
@@ -56,7 +43,6 @@ gulp.task('watch', () => {
         done()
     }
     gulp.watch('./**/**', browserReload)
-    gulp.watch('./*.html', gulp.series('minify-html'))
     gulp.watch('./scss/*.scss', gulp.series('sass'))
     gulp.watch('./js/*.js', gulp.series('babel'))
 })

@@ -70,10 +70,10 @@ function initMap() {
         markers = locations.map(
             function (locations, i) {
                 return new google.maps.Marker({
-                    // map: map,
+                    map: map,
                     // マーカークラスタ使用時は削除
                     position: locations,
-                    animation: google.maps.Animation.DROP,
+                    // animation: google.maps.Animation.DROP,
                     // ラベルの表示(今回はInfoWindowがあるためなしでもOK？)
                     // label: locations.rc_name,
                     // icon: {
@@ -130,9 +130,10 @@ function initMap() {
             }
         }
 
-        const markerCluster = new MarkerClusterer(map, markers, {
-            imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-        });
+        // const markerCluster = new MarkerClusterer(map, markers, {
+        //     imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+        // });
+
         // Geolocation APIに対応している
         if (navigator.geolocation) {
             getPosition();
@@ -178,28 +179,6 @@ function getPosition() {
         }
     );
 }
-
-
-let showLoadingDialog = function () {
-    let loadingDialog = document.getElementById('loading-dialog');
-
-    if (loadingDialog) {
-        loadingDialog.show();
-    } else {
-        ons.createElement('loading-dialog.html', {
-                append: true
-            })
-            .then(function (loadingDialog) {
-                loadingDialog.show();
-            });
-    }
-};
-
-let hideLoadingDialog = function (id) {
-    document
-        .getElementById(id)
-        .hide();
-};
 
 const getNowLocation = function getNowLocation() {
     getPosition();

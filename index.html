@@ -25,216 +25,29 @@
     <ons-navigator id="appNavigator" swipe-target-width="100px">
         <ons-page>
             <ons-splitter id="appSplitter">
-                <ons-splitter-side id="sidemenu" page="setting.html" side="left" collapse="" width="260px">
-                </ons-splitter-side>
                 <ons-splitter-content page="tabbar.html"></ons-splitter-content>
             </ons-splitter>
         </ons-page>
     </ons-navigator>
 
     <template id="tabbar.html">
-        <ons-page id="tabbar-page">
-            <!-- <ons-toolbar class="toolbar" id="top-toolbar">
-                <div class="toolbar__left">
-                    <ons-toolbar-button onclick="fn.toggleMenu()">
-                        <ons-icon icon="md-menu"></ons-icon>
-                    </ons-toolbar-button>
-                </div>
-
-                <div class="toolbar__center">
-                    マップ
-                </div>
-
-                <div class="toolbar__right">
-                    <span class="toolbar-button" onclick="refreshView()">
-                        <ons-icon icon="refresh">
-                        </ons-icon>
-
-                    </span>
-                </div>
-            </ons-toolbar> -->
+        <ons-page id="tabbar-page">
             <ons-tabbar position="bottom">
                 <ons-tab page="maps.html" label="マップ" icon="ion-map" active>
                 </ons-tab>
-                <ons-tab page="list.html" label="検索" icon="ion-search">
-                </ons-tab>
-                <!-- <ons-tab page="setting.html" label="設定" icon="ion-ios-settings">
-        </ons-tab> -->
+                <!-- <ons-tab page=".html" label="" icon="md-person" active>
+                </ons-tab> -->
             </ons-tabbar>
-        </ons-page>
-    </template>
-
-    <template id="sidemenu.html">
-        <ons-page>
-            <div class="profile-pic">
-                <img src="https://monaca.io/img/logos/download_image_onsenui_01.png">
-            </div>
-
-            <ons-list-title>Access</ons-list-title>
-            <ons-list>
-                <ons-list-item onclick="fn.loadView(0)">
-                    <div class="left">
-                        <ons-icon fixed-width class="list-item__icon" icon="ion-home, material:md-home"></ons-icon>
-                    </div>
-                    <div class="center">
-                        Home
-                    </div>
-                    <div class="right">
-                        <ons-icon icon="fa-link"></ons-icon>
-                    </div>
-                </ons-list-item>
-                <ons-list-item onclick="fn.loadView(1)">
-                    <div class="left">
-                        <ons-icon fixed-width class="list-item__icon" icon="ion-edit, material:md-edit"></ons-icon>
-                    </div>
-                    <div class="center">
-                        Forms
-                    </div>
-                    <div class="right">
-                        <ons-icon icon="fa-link"></ons-icon>
-                    </div>
-                </ons-list-item>
-                <ons-list-item onclick="fn.loadView(2)">
-                    <div class="left">
-                        <ons-icon fixed-width class="list-item__icon" icon="md-movie-alt"></ons-icon>
-                    </div>
-                    <div class="center">
-                        Animations
-                    </div>
-                    <div class="right">
-                        <ons-icon icon="fa-link"></ons-icon>
-                    </div>
-                </ons-list-item>
-            </ons-list>
-
-            <ons-list-title style="margin-top: 10px">Links</ons-list-title>
-            <ons-list>
-                <ons-list-item onclick="fn.loadLink('https://onsen.io/v2/docs/guide/js/')">
-                    <div class="left">
-                        <ons-icon fixed-width class="list-item__icon" icon="ion-document-text"></ons-icon>
-                    </div>
-                    <div class="center">
-                        Docs
-                    </div>
-                    <div class="right">
-                        <ons-icon icon="fa-external-link"></ons-icon>
-                    </div>
-                </ons-list-item>
-                <ons-list-item onclick="fn.loadLink('https://github.com/OnsenUI/OnsenUI')">
-                    <div class="left">
-                        <ons-icon fixed-width class="list-item__icon" icon="ion-social-github"></ons-icon>
-                    </div>
-                    <div class="center">
-                        GitHub
-                    </div>
-                    <div class="right">
-                        <ons-icon icon="fa-external-link"></ons-icon>
-                    </div>
-                </ons-list-item>
-                <ons-list-item onclick="fn.loadLink('https://community.onsen.io/')">
-                    <div class="left">
-                        <ons-icon fixed-width class="list-item__icon" icon="ion-chatboxes"></ons-icon>
-                    </div>
-                    <div class="center">
-                        Forum
-                    </div>
-                    <div class="right">
-                        <ons-icon icon="fa-external-link"></ons-icon>
-                    </div>
-                </ons-list-item>
-                <ons-list-item onclick="fn.loadLink('https://twitter.com/Onsen_UI')">
-                    <div class="left">
-                        <ons-icon fixed-width class="list-item__icon" icon="ion-social-twitter"></ons-icon>
-                    </div>
-                    <div class="center">
-                        Twitter
-                    </div>
-                    <div class="right">
-                        <ons-icon icon="fa-external-link"></ons-icon>
-                    </div>
-                </ons-list-item>
-            </ons-list>
         </ons-page>
     </template>
 
     <template id="maps.html">
         <ons-page id="Maps">
-            <!-- <div class="progress-bar progress-bar--indeterminate">
-          </div> -->
-            <ons-search-input class="search-input-map" placeholder="検索"
-                onchange="ons.notification.alert('Searched for: ' + this.value)">
-            </ons-search-input>
             <div id="map"></div>
             <ons-fab position="bottom left" direction="up" onclick="getNowLocation()">
-                <ons-icon icon="fa-street-view"></ons-icon>
+                <ons-icon icon="md-my-location"></ons-icon>
             </ons-fab>
-            <!-- <ons-speed-dial position="bottom left" direction="up">
-        <ons-fab>
-          <ons-icon icon="md-share"></ons-icon>
-        </ons-fab>
-        <ons-speed-dial-item>
-          <ons-icon icon="md-twitter"></ons-icon>
-        </ons-speed-dial-item>
-      </ons-speed-dial> -->
         </ons-page>
-    </template>
-
-    <template id="list.html">
-        <ons-page id="List" on-infinite-scroll="fn.loadMore">
-            <!-- <div class="progress-bar progress-bar--indeterminate">
-                </div> -->
-            <ons-search-input class="search-input-list" placeholder="検索"
-                onchange="ons.notification.alert('Searched for: ' + this.value)">
-            </ons-search-input>
-            <ons-list-header>リスト</ons-list-header>
-            <ons-list id="list-node"></ons-list>
-            <div class="list-loading">
-                <ons-icon icon="fa-spinner" size="26px" spin></ons-icon>
-            </div>
-
-
-            <script>
-                ons.getScriptPage().onInit = function () {
-                    var listNode = document.getElementById('list-node');
-                    var createListItem = function (i) {
-                        return ons.createElement(`<ons-list-item>Item #${i}</ons-list-item>`);
-                    }
-                    for (let i = 0; i < 30; i++) {
-                        listNode.appendChild(createListItem(i));
-                    }
-                    window.fn.loadMore = function (done) {
-                        setTimeout(() => {
-                                const listLength = listNode.children.length;
-                                for (let i = 0; i < 10; i++) {
-                                    listNode.appendChild(createListItem(listLength + i));
-                                }
-                                done();
-                            },
-                            600)
-                    }
-                }
-            </script>
-        </ons-page>
-    </template>
-
-    <template id="dialog.html">
-        <ons-dialog id="first-dialog">
-            <div class="dialog-content">
-                <p class="dialog-text">
-                    安全に気をつけて本アプリを使用してください。
-                </p>
-                <ons-button class="dialog-button" onclick="hideDialog('first-dialog')">閉じる</ons-button>
-
-            </div>
-        </ons-dialog>
-    </template>
-
-    <template id="loading-dialog.html">
-        <ons-dialog id="loading-dialog">
-            <div style="text-align: center; padding: 10px;">
-                <ons-progress-circular indeterminate></ons-progress-circular>
-            </div>
-        </ons-dialog>
     </template>
     <script src='https://unpkg.com/onsenui/js/onsenui.js'></script>
     <script src="js/main.js"></script>

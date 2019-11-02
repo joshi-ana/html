@@ -28,24 +28,3 @@ window.refreshView = function refreshView() {
     location.reload(true);
   }
 }
-
-let showTemplateDialog = function showTemplateDialog() {
-  let dialog = document.getElementById('first-dialog');
-
-  if (dialog) {
-    dialog.show();
-  } else {
-    ons.createElement('dialog.html', {
-        append: true
-      })
-      .then(function (dialog) {
-        dialog.show();
-      });
-  }
-};
-
-let hideDialog = function hideDialog(id) {
-  document
-    .getElementById(id)
-    .hide();
-};

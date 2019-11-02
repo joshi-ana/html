@@ -187,6 +187,11 @@ p {
 }
 
 ons- {
+
+    &fab{
+        background-color: #4F81C7!important;
+    }
+
     &list {
         &-item {
             color: #444;
@@ -216,7 +221,7 @@ ons- {
 
 }
 
-.list-loading {
-    margin: 20px;
-    text-align: center !important;
+.gm-style .gm-style-iw-t::after{
+    display: none;
+    overflow: hidden;
 }

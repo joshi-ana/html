@@ -70,10 +70,10 @@ async function initMap() {
                     // animation: google.maps.Animation.DROP,
                     // ラベルの表示(今回はInfoWindowがあるためなしでもOK？)
                     // label: locations.rc_name,
-                    // icon: {
-                    //     url: 'img/icon/humikiri.svg',
-                    //     scaledSize: new google.maps.Size(48, 48)
-                    // }
+                    icon: {
+                        url: 'img/emoji_people-24px.svg',
+                        scaledSize: new google.maps.Size(32, 32)
+                    }
                 });
             });
 

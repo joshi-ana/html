@@ -19,10 +19,11 @@
     <!-- <script src="js/bundle/fastclick.bundle.js"></script> -->
     <!-- <script src="components/loader.js"></script> -->
     <!-- <script src="lib/onsenui/js/onsenui.min.js"></script> -->
+    <script src='https://unpkg.com/onsenui/js/onsenui.js'></script>
 </head>
 
 <body onload="initMap()">
-    <ons-navigator id="appNavigator" swipe-target-width="100px">
+    <ons-navigator id="appNavigator">
         <ons-page>
             <ons-splitter id="appSplitter">
                 <ons-splitter-content page="tabbar.html"></ons-splitter-content>
@@ -31,15 +32,32 @@
     </ons-navigator>
 
     <template id="tabbar.html">
-        <ons-page id="tabbar-page">
+        <ons-page id="tabbar">
             <ons-tabbar position="bottom">
-                <ons-tab page="maps.html" label="マップ" icon="ion-map" active>
+                <ons-tab page="maps.html"
+                         label="マップ"
+                         icon="ion-map"
+                         active>
                 </ons-tab>
-                <!-- <ons-tab page=".html" label="" icon="md-person" active>
-                </ons-tab> -->
+                <ons-tab page="setting.html"
+                         label="設定"
+                         icon="md-person">
+                </ons-tab>
             </ons-tabbar>
         </ons-page>
     </template>
+
+    <!-- <template id="register.html">
+        <ons-page id="Register">
+        Register
+        </ons-page>
+    </template>
+
+    <template id="login.html">
+        <ons-page id="Login">
+        Login
+        </ons-page>
+    </template> -->
 
     <template id="maps.html">
         <ons-page id="Maps">
@@ -49,10 +67,27 @@
             </ons-fab>
         </ons-page>
     </template>
-    <script src='https://unpkg.com/onsenui/js/onsenui.js'></script>
+    <template id="setting.html">
+        <ons-page id="Setting">
+            <header class="component-header">
+                <h1 class="component-header-text">
+                    設定
+                </h1>
+            </header>
+            <div class="component-white">
+                <p class="component-white-text">どんな人を探したい？</p>
+                <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+                <p class="component-white-text">どんな人を探したい？</p>
+                <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+                <ons-button>この条件で探す</ons-button>
+            </div>
+
+        </ons-page>
+    </template>
+
+     <script src="js/map.js"></script>
     <script src="js/module.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/map.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQrmnEVjcFWiE2kq_9_0xkb9tnr2YpbF4&language=ja&region=JP"
         async defer></script>

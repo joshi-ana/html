@@ -217,59 +217,6 @@
         </ons-page>
     </template>
 
-    <template id="setting.html">
-        <ons-page id="Setting">
-            <div class="profile-pic">
-                <img src="https://monaca.io/img/logos/download_image_onsenui_01.png">
-            </div>
-            <!-- <div class="progress-bar progress-bar--indeterminate">
-                </div> -->
-            <!-- <ons-list-header>プロフィール</ons-list-header>
-      <ons-list-item>
-        <div class="left">
-          <img class="list-item__thumbnail" src="img/profile/yoshi.jpeg">
-        </div>
-        <div class="center">
-          <span class="list-item__title">Yoshihisa Kaino</span><span class="list-item__subtitle">兵庫県 姫路市</span>
-        </div>
-      </ons-list-item> -->
-
-            <ons-list>
-                <ons-list-header>サポート</ons-list-header>
-                <ons-list-item modifier="chevron" tappable onclick="contact()">お問い合わせ</ons-list-item>
-                <ons-list-item modifier="chevron" tappable onclick="privacyPolicy()">個人情報保護方針</ons-list-item>
-                <ons-list-item modifier="chevron" tappable onclick="oss()">オープンソースソフトウェア</ons-list-item>
-                <ons-list-item modifier="chevron" tappable onclick="lisence()">ライセンス</ons-list-item>
-
-                <ons-list-header>詳細設定</ons-list-header>
-                <ons-list-item>
-                    <div class="center">
-                        位置情報の使用を許可する
-                    </div>
-                    <div class="right">
-                        <ons-switch></ons-switch>
-                    </div>
-                </ons-list-item>
-                <ons-list-item>
-                    <div class="center">
-                        マップに他の情報を表示する
-                    </div>
-                    <div class="right">
-                        <ons-switch></ons-switch>
-                    </div>
-                </ons-list-item>
-                <ons-list-header>開発者</ons-list-header>
-                <ons-list-item>
-                    <div class="left">
-                        <!-- <img class="list-item__thumbnail" src="img/profile/yoshi.jpg"> -->
-                    </div>
-                    <div class="center">
-                        <span class="list-item__title">aaa</span><span class="list-item__subtitle">aaa</span>
-                    </div>
-                </ons-list-item>
-        </ons-page>
-    </template>
-
     <template id="dialog.html">
         <ons-dialog id="first-dialog">
             <div class="dialog-content">
@@ -292,7 +239,6 @@
     <script src='https://unpkg.com/onsenui/js/onsenui.js'></script>
     <script src="js/module.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/fn.js"></script>
     <script src="js/map.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQrmnEVjcFWiE2kq_9_0xkb9tnr2YpbF4&language=ja&region=JP"

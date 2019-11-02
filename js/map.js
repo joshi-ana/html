@@ -1,7 +1,5 @@
 let infoWindow = []
 
-const REQUEST_URL = "https://api.rc-map.com/v1/all.json"
-
 let map;
 
 // Styleのオプション（名前非表示など）
@@ -16,14 +14,10 @@ const styleOptions = [{
 let markers;
 let bounds;
 
-async function getJsonData(url) {
-    const response = await fetch(url);
-    const jsonData = await response.json();
-    return jsonData;
-}
-
-function initMap() {
-    getJsonData(REQUEST_URL).then(function (locations) {
+async function initMap() {
+    const position = await getNowPosition();
+    console.log(position);
+    getAroundMenPosition(position).then(function (locations) {
 
         for (let i = 0; i < locations.length; i++) {
             // 数字でない
@@ -85,19 +79,19 @@ function initMap() {
 
         for (let i = 0; i < locations.length; i++) {
 
-            let rcKana = locations[i]['rc_kana'];
-            let rcName = locations[i]['rc_name'];
+            let name = locations[i]['name'];
+            let description = locations[i]['description'];
 
             // div要素の作成
             let infoWindowElement = document.createElement('div');
             // add class
             infoWindowElement.setAttribute('class', 'map');
 
-            let kanaElement = document.createElement('p');
-            kanaElement.textContent = rcKana;
+            let nameElement = document.createElement('p');
+            nameElement.textContent = name;
 
-            let nameElement = document.createElement('h1');
-            nameElement.textContent = rcName;
+            let descriptionElement = document.createElement('h1');
+            descriptionElement.textContent = description;
 
             let goingButtonElement = document.createElement('ons-button');
             goingButtonElement.setAttribute('modifier', 'quiet');
@@ -113,8 +107,8 @@ function initMap() {
             goingButtonElement.textContent = 'GoogleMapで開く';
 
 
-            infoWindowElement.appendChild(kanaElement);
             infoWindowElement.appendChild(nameElement);
+            infoWindowElement.appendChild(descriptionElement);
             infoWindowElement.appendChild(goingButtonElement);
 
             infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
@@ -136,7 +130,7 @@ function initMap() {
 
         // Geolocation APIに対応している
         if (navigator.geolocation) {
-            getPosition();
+            moveToNowPosition();
             // alert("この端末では位置情報が取得できます");
             // Geolocation APIに対応していない
         } else {
@@ -148,8 +142,25 @@ function initMap() {
     });
 }
 
+// 現在の緯度、経度を取得
+async function getNowPosition() {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                resolve({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                })
+            },
+            (err) => {
+                reject(err);
+            }
+        )
+    })
+}
+
 // 現在地取得処理
-function getPosition() {
+function moveToNowPosition() {
     // 現在地を取得
     navigator.geolocation.getCurrentPosition(
         // 取得成功した場合
@@ -181,5 +192,5 @@ function getPosition() {
 }
 
 const getNowLocation = function getNowLocation() {
-    getPosition();
+    moveToNowPosition();
 }

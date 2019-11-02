@@ -103,8 +103,9 @@ async function initMap() {
             function openUrl() {
                 window.open(goingUrl, '_system')
             }
+        
 
-            goingButtonElement.onclick = openUrl;
+            goingButtonElement.onclick = showTemplateDialog();
             goingButtonElement.textContent = '話してみたい！';
 
             floatElement.appendChild(imgElement);

@@ -37,14 +37,9 @@
     <template id="tabbar.html">
         <ons-page id="tabbar">
             <ons-tabbar position="bottom">
-                <ons-tab page="maps.html"
-                         label="マップ"
-                         icon="ion-map"
-                         active>
+                <ons-tab page="maps.html" label="マップ" icon="ion-map" active>
                 </ons-tab>
-                <ons-tab page="setting.html"
-                         label="設定"
-                         icon="md-person">
+                <ons-tab page="setting.html" label="設定" icon="md-person">
                 </ons-tab>
             </ons-tabbar>
         </ons-page>
@@ -70,6 +65,21 @@
             </ons-fab>
         </ons-page>
     </template>
+
+    <template id="dialog.html">
+        <ons-dialog id="my-dialog">
+            <div style="text-align: center; padding: 10px;">
+                <p>
+                    This is a simple dialog!
+                </p>
+
+                <p>
+                    <ons-button onclick="hideDialog('my-dialog')">Close</ons-button>
+                </p>
+            </div>
+        </ons-dialog>
+    </template>
+
     <template id="setting.html">
         <ons-page id="Setting">
             <header class="component-header">
@@ -88,7 +98,7 @@
         </ons-page>
     </template>
 
-     <script src="js/map.js"></script>
+    <script src="js/map.js"></script>
     <script src="js/module.js"></script>
     <script src="js/main.js"></script>
     <script

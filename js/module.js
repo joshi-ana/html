@@ -23,19 +23,63 @@ const getDistance = (lat1, lng1, lat2, lng2) => {
  */
 
 const getAroundMenPosition = async (myPosition) => {
-    const { myLat, myLng } = myPosition;
+    const myLat = myPosition.lat;
+    const myLng = myPosition.lng;
 
     // 全員の男を取得
-    const allMenPosition = await fetch('http://dstn1.kumoko.club/dataspider/trigger/users');
+    let allMenPosition = [];
+    try {
+        const allMenPositionJsonData = await fetch('./js/resources/users.json', {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'X-Cybozu-API-Token': 'aFHeAP0UUn3QzdPgzPCZ0ekPuSpgi8ahzu7WdGWk'
+            }
+        });
+        allMenPosition = await allMenPositionJsonData.json();
+        allMenPosition = allMenPosition.users;
+    } catch (e) {
+        console.log('error =>', e);
+    }
 
     // 1km以内の100人まで男を取得
     const menBelow100 = [];
     for (let i = 0; i < allMenPosition.length; i++) {
-        if (getDistance(myLat, myLng, allMenPosition[i].lat, allMenPosition[i].lng) <= 1) {
-            menBelow100.push(man);
+        console.log(getDistance(myLat, myLng, allMenPosition[i].lat, allMenPosition[i].lng))
+        if (getDistance(myLat, myLng, allMenPosition[i].lat, allMenPosition[i].lng) < 10000) {
+            menBelow100.push(allMenPosition[i]);
         }
         // 100人以上いたら終わり
         if (menBelow100.length >= 100) break;
     }
     return menBelow100;
+}
+
+/** 
+ * 
+ * @param { Object } userInfo ユーザの情報、DOM操作で取ってくる
+ * 
+ */
+const registerUser = async (userInfo) => {
+    const { is_announcer, name, mail, pass } = userInfo;
+
+    // POST
+    try {
+        await fetch('/users', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                is_announcer: is_announcer,
+                name: name,
+                mail: mail,
+                password: pass
+            })
+        });
+        return true;
+    } catch (e) {
+        throw e;
+    }
 }

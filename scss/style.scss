@@ -157,22 +157,6 @@ ons- {
     }
 }
 
-#rc- {
-    &img {
-        width: 100%;
-        margin: 2% 0;
-    }
-
-    &name {
-        margin: 1% 0;
-    }
-
-    &border {
-        margin: 3% 8%;
-    }
-
-}
-
 .gm-style .gm-style-iw-t::after {
     display: none;
     overflow: hidden;
@@ -222,4 +206,9 @@ ons- {
             text-align: center;
         }
     }
+}
+
+#register.html .page__background,
+#Register .page__background {
+    background-color: #18D4DB!important;
 }

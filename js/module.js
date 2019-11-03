@@ -29,15 +29,8 @@ const getAroundMenPosition = async (myPosition) => {
     // 全員の男を取得
     let allMenPosition = [];
     try {
-        const allMenPositionJsonData = await fetch('./js/resources/users.json', {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'X-Cybozu-API-Token': 'aFHeAP0UUn3QzdPgzPCZ0ekPuSpgi8ahzu7WdGWk'
-            }
-        });
+        const allMenPositionJsonData = await fetch('https://bfaf4211.ngrok.io/joshi-ana-6c309/us-central1/users');
         allMenPosition = await allMenPositionJsonData.json();
-        allMenPosition = allMenPosition.users;
     } catch (e) {
         console.log('error =>', e);
     }
@@ -45,8 +38,10 @@ const getAroundMenPosition = async (myPosition) => {
     // 1km以内の100人まで男を取得
     const menBelow100 = [];
     for (let i = 0; i < allMenPosition.length; i++) {
-        console.log(getDistance(myLat, myLng, allMenPosition[i].lat, allMenPosition[i].lng))
-        if (getDistance(myLat, myLng, allMenPosition[i].lat, allMenPosition[i].lng) < 10000) {
+        if (!(allMenPosition[i].lat && allMenPosition[i].lng)) {
+            continue;
+        }
+        if (getDistance(myLat, myLng, allMenPosition[i].lat, allMenPosition[i].lng) < 10000000) {
             menBelow100.push(allMenPosition[i]);
         }
         // 100人以上いたら終わり
@@ -79,15 +74,8 @@ const registerUser = async () => {
 
     // POST
     try {
-        await fetch('https://moumoon.cybozu.com/k/v1/record.json?app=5', {
+        await fetch('https://bfaf4211.ngrok.io/joshi-ana-6c309/us-central1/users', {
             method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Host': 'localhost:3000',
-                'X-Cybozu-Authorization': 'aFHeAP0UUn3QzdPgzPCZ0ekPuSpgi8ahzu7WdGWk',
-                'Authorization': 'Basic aFHeAP0UUn3QzdPgzPCZ0ekPuSpgi8ahzu7WdGWk',
-                'Content-Type': 'application/json'
-            },
             body: JSON.stringify({
                 is_announcer: is_announcer,
                 name: name,
@@ -114,7 +102,6 @@ const getMyUser = () => {
     return new Promise((resolve, reject) => {
         firebase.auth().onAuthStateChanged(async (user) => {
             if (!user) {
-                alert('ログインしてください！');
                 // reject();
                 return false;
             }
@@ -130,3 +117,17 @@ const getMyUser = () => {
         })
     })
 }
+
+let isLogin = true;
+
+document.addEventListener('prechange', function (event) {
+    let tabLabel = event.tabItem.getAttribute('label');
+    // タブラベルの検知
+    console.log(tabLabel);
+    if (tabLabel != '登録') {
+        isLogin = false;
+        if(getMyUser() == false){
+            alert("ログインしてください。")
+        }
+    }
+})

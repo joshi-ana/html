@@ -253,13 +253,13 @@ ons- {
         text-align: center;
         border-radius: 125px;
 
-        &.register{
+        &#register-btn {
             margin-top: 16vh;
             background: #fff;
             color: #18D4DB;
         }
 
-        &.login{
+        &#login-btn {
             margin-top: 1.5vh;
             background: #F3C53B;
             color: #fff;

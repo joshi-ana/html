@@ -20,3 +20,29 @@ if (window.navigator.standalone) {
 } else {
   // document.write("このページをホームに追加してください");
 }
+
+
+document.addEventListener('init', function (event) {
+    var page = event.target;
+
+    if (page.id === 'Title') {
+      page.querySelector('#register-btn').onclick = function () {
+        document.querySelector('#signNavigator').pushPage('register.html', {
+          data: {
+            title: 'Register'
+          }
+        })
+      }
+    }
+
+    if (page.id === 'Title') {
+      page.querySelector('#login-btn').onclick = function () {
+        document.querySelector('#signNavigator').pushPage('login.html', {
+          data: {
+            title: 'Login'
+          }
+        })
+      }
+    }
+  }
+)

@@ -65,24 +65,67 @@ const registerUser = async () => {
           mail = document.getElementById('mail').value,
           pass = document.getElementById('pass').value,
           is_announcer = document.getElementById('is_announcer').value;
+// 登録する
+const registerUser = async (userInfo) => {
+    // Firebase create user
+    let uid;
+    try {
+        const data = await firebase.auth().createUserWithEmailAndPassword(userInfo.mail, userInfo.pass);
+        uid = data.user.uid;
+    } catch (e) {
+        alert('ユーザの登録に失敗しました');
+        return false;
+    }
 
     // POST
     try {
-        await fetch('/users', {
+        await fetch('https://moumoon.cybozu.com/k/v1/record.json?app=5', {
             method: 'POST',
             mode: 'cors',
             headers: {
+                'Host': 'localhost:3000',
+                'X-Cybozu-Authorization': 'aFHeAP0UUn3QzdPgzPCZ0ekPuSpgi8ahzu7WdGWk',
+                'Authorization': 'Basic aFHeAP0UUn3QzdPgzPCZ0ekPuSpgi8ahzu7WdGWk',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                is_announcer: is_announcer,
-                name: name,
-                mail: mail,
-                password: pass
+                is_announcer: userInfo.is_announcer,
+                name: userInfo.name,
+                uid: uid
             })
         });
-        return true;
     } catch (e) {
         throw e;
     }
+}
+
+// ログインする
+const loginUser = async (userInfo) => {
+    try {
+        await firebase.auth().signInWithEmailAndPassword(userInfo.mail, userInfo.pass);
+    } catch (e) {
+        alert('ログインに失敗しました');
+        return false;
+    }
+}
+
+// 自分のユーザを取得
+const getMyUser = () => {
+    return new Promise((resolve, reject) => {
+        firebase.auth().onAuthStateChanged(async (user) => {
+            if (!user) {
+                alert('ログインしてください！');
+                reject();
+            }
+            const uid = user.uid;
+            const loggedInUser = await fetch('https://moumoon.cybozu.com/k/v1/record.json?app=5&uid=' + uid, {
+                headers: {
+                    'Host': 'localhost:3000',
+                    'X-Cybozu-Authorization': 'aFHeAP0UUn3QzdPgzPCZ0ekPuSpgi8ahzu7WdGWk',
+                    'Authorization': 'Basic aFHeAP0UUn3QzdPgzPCZ0ekPuSpgi8ahzu7WdGWk'
+                }
+            })
+            resolve(loggedInUser);
+        })
+    })
 }

@@ -142,9 +142,6 @@
         </ons-page>
     </template>
 
-    <script src="js/map.js"></script>
-    <script src="js/module.js"></script>
-    <script src="js/main.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQrmnEVjcFWiE2kq_9_0xkb9tnr2YpbF4&language=ja&region=JP"
         async defer></script>
@@ -152,6 +149,27 @@
         src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
 
+    <!-- firebase settings -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKtbJeVsNEI3mu3adAthf0dvvOHk1_l9Y",
+            authDomain: "joshi-ana-6c309.firebaseapp.com",
+            databaseURL: "https://joshi-ana-6c309.firebaseio.com",
+            projectId: "joshi-ana-6c309",
+            storageBucket: "joshi-ana-6c309.appspot.com",
+            messagingSenderId: "203198210668",
+            appId: "1:203198210668:web:1e33bf076b0a7a56f2ee49"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Load modules -->
+    <script src="js/module.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
 </body>
 
 </html>

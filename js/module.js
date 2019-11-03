@@ -60,17 +60,17 @@ const getAroundMenPosition = async (myPosition) => {
  * @param { Object } userInfo ユーザの情報、DOM操作で取ってくる
  * 
  */
+// 登録する
 const registerUser = async () => {
     const name = document.getElementById('name').value,
           mail = document.getElementById('mail').value,
           pass = document.getElementById('pass').value,
           is_announcer = document.getElementById('is_announcer').value;
-// 登録する
-const registerUser = async (userInfo) => {
+
     // Firebase create user
     let uid;
     try {
-        const data = await firebase.auth().createUserWithEmailAndPassword(userInfo.mail, userInfo.pass);
+        const data = await firebase.auth().createUserWithEmailAndPassword(mail, pass);
         uid = data.user.uid;
     } catch (e) {
         alert('ユーザの登録に失敗しました');
@@ -89,8 +89,8 @@ const registerUser = async (userInfo) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                is_announcer: userInfo.is_announcer,
-                name: userInfo.name,
+                is_announcer: is_announcer,
+                name: name,
                 uid: uid
             })
         });

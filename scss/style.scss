@@ -92,7 +92,7 @@ p {
         font-size: 14px;
         font-weight: bold;
         padding: 0;
-        margin: 15px 0 0 0;
+        margin: 15px 0 5px 0;
     }
 }
 
@@ -226,7 +226,7 @@ ons- {
 #Title{
     img{
         width: 90%;
-        margin: 10vh 5% 0 5%;
+        margin: 15vh 5% 0 5%;
         height: 30%;
         object-fit: cover;
         border-radius: 8px;
@@ -236,7 +236,7 @@ ons- {
         font-size: 24px;
         color: #fff;
         text-align: center;
-        margin: 5vh auto 0 auto;
+        margin: 4vh auto 0 auto;
         font-weight: bold;
     }
 
@@ -254,7 +254,7 @@ ons- {
         border-radius: 125px;
 
         &.register{
-            margin-top: 15vh;
+            margin-top: 18vh;
             background: #fff;
             color: #18D4DB;
         }

@@ -60,8 +60,11 @@ const getAroundMenPosition = async (myPosition) => {
  * @param { Object } userInfo ユーザの情報、DOM操作で取ってくる
  * 
  */
-const registerUser = async (userInfo) => {
-    const { is_announcer, name, mail, pass } = userInfo;
+const registerUser = async () => {
+    const name = document.getElementById('name').value,
+          mail = document.getElementById('mail').value,
+          pass = document.getElementById('pass').value,
+          is_announcer = document.getElementById('is_announcer').value;
 
     // POST
     try {

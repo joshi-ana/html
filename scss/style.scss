@@ -218,7 +218,52 @@ ons- {
     }
 }
 
-#register.html .page__background,
-#Register .page__background {
+#Title .html .page__background,
+#Title .page__background {
     background-color: #18D4DB!important;
+}
+
+#Title{
+    img{
+        width: 90%;
+        margin: 10vh 5% 0 5%;
+        height: 30%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    h1{
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+        margin: 5vh auto 0 auto;
+        font-weight: bold;
+    }
+
+    p{
+        font-size: 12px;
+        color: #fff;
+        text-align: center;
+        margin: 1.5vh auto 0 auto;
+    }
+
+    ons-button{
+        width: 80%;
+        margin: 0 10% 0 10%;
+        text-align: center;
+        border-radius: 125px;
+
+        &.register{
+            margin-top: 15vh;
+            background: #fff;
+            color: #18D4DB;
+        }
+
+        &.login{
+            margin-top: 1.5vh;
+            background: #F3C53B;
+            color: #fff;
+        }
+    }
+
 }

@@ -19,18 +19,18 @@ async function initMap() {
     console.log(position);
     getAroundMenPosition(position).then(function (locations) {
 
-        for (let i = 0; i < locations.length; i++) {
-            // 数字でない
-            if (isNaN(locations[i].lat) || isNaN(locations[i].lng)) {
-                if (locations[i].lat === "" || locations[i].lng === "") {
-                    locations[i].lat = 0
-                    locations[i].lng = 0
-                }
-            } else {
-                locations[i].lat = parseFloat(locations[i].lat, 10);
-                locations[i].lng = parseFloat(locations[i].lng, 10);
-            }
-        }
+        // for (let i = 0; i < locations.length; i++) {
+        //     // 数字でない
+        //     if (isNaN(locations[i].lat) || isNaN(locations[i].lng)) {
+        //         if (locations[i].lat === "" || locations[i].lng === "") {
+        //             locations[i].lat = 0
+        //             locations[i].lng = 0
+        //         }
+        //     } else {
+        //         locations[i].lat = parseFloat(locations[i].lat, 10);
+        //         locations[i].lng = parseFloat(locations[i].lng, 10);
+        //     }
+        // }
 
         // 地図の作成
         let mapInfo = new google.maps.LatLng({
@@ -78,8 +78,7 @@ async function initMap() {
             });
 
         for (let i = 0; i < locations.length; i++) {
-
-            let name = locations[i]['name'];
+            let image_url = locations[i]['image_url'];
             let description = locations[i]['description'];
 
             // div要素の作成
@@ -87,14 +86,16 @@ async function initMap() {
             // add class
             infoWindowElement.setAttribute('class', 'map');
 
-            let nameElement = document.createElement('p');
-            nameElement.textContent = name;
+            let floatElement = document.createElement('div');
+            floatElement.setAttribute('class', 'float-box');
 
-            let descriptionElement = document.createElement('h1');
+            let imgElement = document.createElement('img');
+            imgElement.setAttribute('src', image_url)
+
+            let descriptionElement = document.createElement('p');
             descriptionElement.textContent = description;
 
             let goingButtonElement = document.createElement('ons-button');
-            goingButtonElement.setAttribute('modifier', 'quiet');
             goingButtonElement.setAttribute('id', 'going');
 
             let goingUrl = "https://maps.google.co.jp/maps?q=" + locations[i]['lat'] + "," + locations[i]['lng'] + "&z=15";
@@ -102,13 +103,14 @@ async function initMap() {
             function openUrl() {
                 window.open(goingUrl, '_system')
             }
+        
 
-            goingButtonElement.onclick = openUrl;
-            goingButtonElement.textContent = 'GoogleMapで開く';
+            goingButtonElement.onclick = showTemplateDialog();
+            goingButtonElement.textContent = '話してみたい！';
 
-
-            infoWindowElement.appendChild(nameElement);
-            infoWindowElement.appendChild(descriptionElement);
+            floatElement.appendChild(imgElement);
+            floatElement.appendChild(descriptionElement);
+            infoWindowElement.appendChild(floatElement);
             infoWindowElement.appendChild(goingButtonElement);
 
             infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加

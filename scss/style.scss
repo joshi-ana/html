@@ -3,16 +3,22 @@ body {
     overscroll-behavior: none;
 }
 
-.page__content {
+html{
+    background-color: #fafafa;
+}
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    p {
-        margin: 0;
-        padding: 0;
+.page {
+    &__content {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p {
+            margin: 0;
+            padding: 0;
+        }
     }
 }
 
@@ -49,69 +55,39 @@ p {
     text-align: center;
     margin: 0;
     padding: 0;
-    max-width: none;
+    // max-width: none;
     -webkit-overflow-scrolling: touch;
-    overflow: scroll;
+    // overflow: scroll;
     border-radius: 0;
 
-    * {
-        margin: 0;
-        padding: 0;
-    }
-}
+    .float-box {
+        display: inline-flex;
 
-// ルビ
-[data-ruby] {
-    position: relative;
+        >* {
+            display: inline;
 
-    &::before {
-        content: attr(data-ruby);
-        position: absolute;
-        top: -1em;
-        left: 0;
-        right: 0;
-        margin: auto auto auto;
-        font-size: 0.5em;
-    }
-}
-
-
-.dialog {
-    &-content {
-        text-align: center;
-        padding: 12px;
-    }
-
-    &-text {
-        margin: 20px 0;
-    }
-
-    &-button {
-        margin: 0 0 20px 0;
-    }
-}
-
-.search-input {
-    cursor: pointer;
-
-    &-map {
-        position: absolute;
-        z-index: 1;
-        top: 40px;
-        width: 90%;
-        margin: 0 5%;
-        opacity: 0.6;
-
-        @media (min-width: 768px) {
-            top: 30px;
-            width: 70%;
-            margin: 0 15%;
         }
     }
 
-    &-list {
-        width: 100%;
+    img {
+        border-radius: 200px;
+        width: 60px;
+        height: 60px;
+    }
+
+    h1,
+    p {
         margin: 0;
+        padding: 0;
+    }
+
+    ons-button {
+        background-color: #F3C53B;
+        border-radius: 25px;
+        width: 100%;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0;
     }
 }
 
@@ -161,35 +137,11 @@ p {
     }
 }
 
-// Top progress bar
-.progress-bar {
-    &--indeterminate {
-        position: absolute;
-        top: 1%;
-        width: 100%;
-        z-index: 1;
-    }
-}
-
-
-.profile-pic {
-    width: 200px;
-    background-color: #fff;
-    margin: 20px auto 10px;
-    border: 1px solid #999;
-    border-radius: 4px;
-
-    img {
-        display: block;
-        max-width: 100%;
-    }
-
-}
-
 ons- {
 
-    &fab{
-        background-color: #4F81C7!important;
+    &fab {
+        background-color: #4F81C7 !important;
+        color: #fff;
     }
 
     &list {
@@ -205,23 +157,58 @@ ons- {
     }
 }
 
-#rc- {
-    &img {
-        width: 100%;
-        margin: 2% 0;
-    }
-
-    &name {
-        margin: 1% 0;
-    }
-
-    &border {
-        margin: 3% 8%;
-    }
-
-}
-
-.gm-style .gm-style-iw-t::after{
+.gm-style .gm-style-iw-t::after {
     display: none;
     overflow: hidden;
+}
+
+.zmdi-my-location:before {
+    color: #ffffff;
+}
+
+.component {
+    &-header {
+    height: 30vh;
+    width: 100%;
+    background-color: #18D4DB;
+        &-text{
+        padding: 8vh 0 0 0!important;
+        font-size: 18px!important;
+        color: #fff;
+        text-align: center;
+        font-weight: bold !important;
+        }
+    }
+    &-white{
+        width: 90% !important;
+        height: 60vh;
+        margin: -15vh 5% 0 5%!important;
+        background-color: #fff;
+        border-radius: 8px;
+
+        &-text{
+            margin: 0 8% !important;
+            padding: 4vh 0 0 0 !important;
+            width: 84% !important;
+            text-align: left !important;
+        }
+        ons-input{
+            width: 84%;
+            margin: 1vh 8% 0 8%;
+            border-radius: 8px;
+        }
+        ons-button{
+            background: #F3C53B;
+            color: #fff;
+            width: 84%;
+            border-radius: 24px;
+            margin: 3vh 8% 0 8%;
+            text-align: center;
+        }
+    }
+}
+
+#register.html .page__background,
+#Register .page__background {
+    background-color: #18D4DB!important;
 }

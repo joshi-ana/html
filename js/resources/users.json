@@ -1,0 +1,11 @@
+{
+    "users": [{
+        "id": 1,
+        "image_url": "",
+        "name": "tenma kamatani",
+        "description": "aaa",
+        "is_announcer": false,
+        "lat": 35,
+        "lng": 139
+    }]
+}

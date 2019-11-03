@@ -119,10 +119,3 @@ const getMyUser = () => {
         })
     })
 }
-
-registerUser({
-    mail: 'd@d.com',
-    pass: 'dddddd',
-    is_announcer: 'n',
-    name: 'dddddd'
-})

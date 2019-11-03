@@ -145,7 +145,7 @@ async function initMap() {
 }
 
 // 現在の緯度、経度を取得
-async function getNowPosition() {
+function getNowPosition() {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
             (position) => {

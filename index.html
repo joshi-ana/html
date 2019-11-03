@@ -47,17 +47,59 @@
         </ons-page>
     </template>
 
-    <template id="register.html">
-        <ons-page id="Register">
-        Register
+    <template id="title.html">
+        <ons-page id="Title">
+            <img>
+            <h1>タイトル</h1>
+            <p>概要</p>
+            <ons-button>登録</ons-button>
+            <ons-button>ログイン</ons-button>
+            <small>説明</small>
         </ons-page>
     </template>
 
-    <!-- template id="login.html">
-        <ons-page id="Login">
-        Login
+    <template id="register.html">
+        <ons-page id="Register">
+            <header class="component-header">
+                <h1 class="component-header-text">
+                    登録
+                </h1>
+            </header>
+            <div class="component-white">
+                <p class="component-white-text">名前</p>
+                <ons-input id="name" modifier="underbar" placeholder="Name" float></ons-input>
+                <p class="component-white-text">メールアドレス</p>
+                <ons-input id="mail" modifier="underbar" placeholder="Mail Address" float></ons-input>
+                <p class="component-white-text">パスワード</p>
+                <ons-input id="pass" modifier="underbar" placeholder="Password" min="6" float></ons-input>
+                <p class="component-white-text">職業</p>
+                <ons-select>
+                    <select id="is_announcer">
+                        <option value="y">アナウンサー</option>
+                        <option value="n">その他</option>
+                    </select>
+                </ons-select>
+                <ons-button onclick="registerUser()">登録</ons-button>
+            </div>
         </ons-page>
-    </template> -->
+    </template>
+
+    <template id="login.html">
+        <ons-page id="Login">
+            <header class="component-header">
+                <h1 class="component-header-text">
+                    設定
+                </h1>
+            </header>
+            <div class="component-white">
+                <p class="component-white-text">どんな人を探したい？</p>
+                <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+                <p class="component-white-text">どんな人を探したい？</p>
+                <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
+                <ons-button>この条件で探す</ons-button>
+            </div>
+        </ons-page>
+    </template>
 
     <template id="maps.html">
         <ons-page id="Maps">

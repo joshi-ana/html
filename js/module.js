@@ -55,6 +55,16 @@ const getAroundMenPosition = async (myPosition) => {
     return menBelow100;
 }
 
+/** 
+ * 
+ * @param { Object } userInfo ユーザの情報、DOM操作で取ってくる
+ * 
+ */
+const registerUser = async () => {
+    const name = document.getElementById('name').value,
+          mail = document.getElementById('mail').value,
+          pass = document.getElementById('pass').value,
+          is_announcer = document.getElementById('is_announcer').value;
 // 登録する
 const registerUser = async (userInfo) => {
     // Firebase create user

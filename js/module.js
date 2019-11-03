@@ -115,7 +115,8 @@ const getMyUser = () => {
         firebase.auth().onAuthStateChanged(async (user) => {
             if (!user) {
                 alert('ログインしてください！');
-                reject();
+                // reject();
+                return false;
             }
             const uid = user.uid;
             const loggedInUser = await fetch('https://moumoon.cybozu.com/k/v1/record.json?app=5&uid=' + uid, {

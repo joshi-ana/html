@@ -105,7 +105,7 @@ async function initMap() {
             }
         
 
-            goingButtonElement.onclick = showTemplateDialog();
+            // goingButtonElement.onclick = showTemplateDialog();
             goingButtonElement.textContent = '話してみたい！';
 
             floatElement.appendChild(imgElement);
